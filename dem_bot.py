@@ -9,7 +9,7 @@ from googletrans import Translator
 # Creating a Chatbot Object
 cbot = ChatBot('Demini')
 # Read Text file
-conv = open('data1.txt', 'r').readlines()
+conv = open('data.txt', 'r').readlines()
 # Set the trainer
 trainer = ListTrainer(cbot)
 # Train the bot
