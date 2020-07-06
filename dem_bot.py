@@ -76,6 +76,8 @@ def ask_from_bot():
     msgs2.insert(END, "You : " + q)
     msgs1.insert(END, "Bot : " + str(response))
     txtField.delete(0, END)
+    msgs1.yview(END)
+    msgs2.yview(END)
 
 # Creating Bot Message Area
 # Bot Lable
@@ -84,7 +86,7 @@ lbl1.pack(pady = 10)
 # List box for Bot's chats
 frame1 = Frame(main)
 sc1 = Scrollbar(frame1)
-msgs1 = Listbox(frame1, width = 60, height = 10, bg = "ivory", font = "Arial 15")
+msgs1 = Listbox(frame1, width = 60, height = 10, bg = "ivory", font = "Arial 15", yscrollcommand = sc1.set)
 sc1.pack(side = RIGHT, fill = Y)
 msgs1.pack(side = LEFT, fill = BOTH, pady = 10)
 frame1.pack()
@@ -96,7 +98,7 @@ lbl2.pack(pady = 10)
 # List box for User's chats
 frame2 = Frame(main)
 sc2 = Scrollbar(frame2)
-msgs2 = Listbox(frame2, width = 60, height = 10, bg = "wheat", font = "Arial 15")
+msgs2 = Listbox(frame2, width = 60, height = 10, bg = "wheat", font = "Arial 15", yscrollcommand = sc2.set)
 sc2.pack(side = RIGHT, fill = Y)
 msgs2.pack(side = LEFT, fill = BOTH, pady = 10)
 frame2.pack()
@@ -108,5 +110,12 @@ txtField.pack(padx = 60, pady = 30)
 # Creating a Send Button
 btn = Button(main, text = "Ask from the Bot", font = "Arial 15", width = 20, bg = "salmon", command = ask_from_bot)
 btn.pack()
+
+# Pressing 'enter' key
+def enter_key(event):
+    btn.invoke()
+
+# Binding the main window with 'enter' key
+main.bind('<Return>', enter_key)
 
 main.mainloop()
