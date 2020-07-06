@@ -30,10 +30,18 @@ def voiceRecognize(lan):
         print("Say Something : ")
         audio = recog.listen(source)
         print("Done!")
-    # Define the speaking language
-    text = recog.recognize_google(audio, language = lan)
-    # Call the provideAnd function
-    updateMsgBoxes(text)
+    if lan == "en-US":
+        # Define the speaking language
+        txts = recog.recognize_google(audio, language = lan)
+        # Update message boxes
+        updateMsgBoxes(txts,0)
+    else:
+        # Define the speaking language
+        txts = recog.recognize_google(audio, language = lan)
+        # Transale English
+        txte = translatorEn(txts)
+        # Update message boxes
+        updateMsgBoxes(txte,txts)
 
 # --For language Translation--
 # Translator object
@@ -101,14 +109,12 @@ def updateMsgBoxes(q,r):
         msgs2.insert(END, "You : " + q)
         msgs1.insert(END, "Bot : " + str(response))
         # Speech
-        # lst = [q,response]
-        # speak(lst)  
+        lst = [q,response]
+        speak(lst)  
     else:
         msgs2.insert(END, "You : " + r)
         msgs1.insert(END, "Bot : " + translatorSi(str(response)))
-        # Speech
-        lst = [r,translatorSi(str(response))]
-        speak(lst)  
+
     txtField.delete(0, END)
     msgs1.yview(END)
     msgs2.yview(END)
@@ -125,6 +131,8 @@ def ask_from_bot():
         if clickedt.get() == "Text":
             q = txtField.get()
             translatorEn(q)
+        else:
+            voiceRecognize("si-LK")
 
 # Pressing 'enter' key to ask from bot
 def enter_key(event):

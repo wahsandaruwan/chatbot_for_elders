@@ -14,6 +14,8 @@ Backend :
 * Chatterbot
 * Google Translate API
 * Google Speech to Text API
+* Pyttsx3
+* ChatterBot
 
 ### Features
 * Uses Machine learning technology
@@ -31,6 +33,7 @@ Backend :
 * Should have installed python 3.7
 * Should have installed following modules
     * pip
+    * PyAudio
 
 ## You are welcome to this update this project if it contains any miss matches.
 
