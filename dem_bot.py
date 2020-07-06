@@ -5,6 +5,16 @@ import pyttsx3 as pp
 import speech_recognition as sr
 from googletrans import Translator
 
+# --Training & Initializing the Bot--
+# Creating a Chatbot Object
+cbot = ChatBot('Demini')
+# Read Text file
+conv = open('data1.txt', 'r').readlines()
+# Set the trainer
+trainer = ListTrainer(cbot)
+# Train the bot
+trainer.train(conv)
+
 # --For text to speech--
 # For Male Voice For Bot
 engine = pp.init()
@@ -60,49 +70,8 @@ def translatorSi(text):
     tr = trans_sentence.text
     return tr
 
-# Create chatbot object
-cbot = ChatBot("Demini")
-
-# Create training list
-dialog = [
-    'Hi',
-    'Hi there!',
-    'Hello',
-    'Hello there!',
-    'How are you?',
-    'I am fine! Thank you',
-    'What is your name?',
-    'I am Demini',
-    'Who are you?',
-    'I am a chat bot',
-    'What are you doing?',
-    'I am helping elder citizens to figure out their daily problems',
-    'What is your task?',
-    'I am helping elder citizens to figure out their daily problems',
-    'Who created you?',
-    'I am created by Dinesh',
-    'Who build you?',
-    'Dinesh build me',
-    'Where do you live?',
-    'In your computer',
-    'Where are you from?',
-    'I am from your computer',
-    'What is your speaking language?',
-    'I mostly speak in english. But I can speak sinhala little bit',
-    'How old are you?',
-    'I have no idea about my age',
-    'What is going on?',
-    'I am enjoying my time',
-    'Whats up?'
-    'Great'
-]
-
-# Assign Bot to trainer
-trainer = ListTrainer(cbot)
-
-# Train the bot with the help of list trainer
-trainer.train(dialog)
-
+# --Common Functions--
+# Update Message Boxes of Both User and Bot
 def updateMsgBoxes(q,r):
     response = cbot.get_response(q)
     if r == 0:
@@ -119,7 +88,7 @@ def updateMsgBoxes(q,r):
     msgs1.yview(END)
     msgs2.yview(END)
 
-# Getting Response from the Bot by Passing User input
+# Intermediate function that handles functionalities
 def ask_from_bot():
     if clickedl.get() == "English":
         if clickedt.get() == "Text":
@@ -157,7 +126,7 @@ lbl1.pack(pady = 10)
 # List box for Bot's chats
 frame1 = Frame(main)
 sc1 = Scrollbar(frame1)
-msgs1 = Listbox(frame1, width = 60, height = 8, bg = "ivory", font = "Arial 15", yscrollcommand = sc1.set)
+msgs1 = Listbox(frame1, width = 60, height = 8, bg = "ivory", font = "Arial 15", yscrollcommand = sc1.set, xscrollcommand = sc1.set)
 sc1.pack(side = RIGHT, fill = Y)
 msgs1.pack(side = LEFT, fill = BOTH, pady = 10)
 frame1.pack()

@@ -17,6 +17,9 @@ Backend :
 * Pyttsx3
 * ChatterBot
 
+Database
+* SQLlite 3
+
 ### Features
 * Uses Machine learning technology
 * Supports Sinhala language
