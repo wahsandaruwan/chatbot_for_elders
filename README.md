@@ -38,6 +38,8 @@ Database
     * pip
     * PyAudio
 
+### License : MIT
+
 ## You are welcome to this update this project if it contains any miss matches.
 
 
