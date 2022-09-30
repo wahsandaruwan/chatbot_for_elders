@@ -16,7 +16,7 @@ httpx==0.13.3
 hyperframe==5.2.0
 idna==2.10
 importlib-metadata==1.7.0
-joblib==0.16.0
+joblib==1.2.0
 mathparse==0.1.2
 murmurhash==1.0.2
 nltk==3.5
